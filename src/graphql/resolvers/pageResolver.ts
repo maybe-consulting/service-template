@@ -1,10 +1,8 @@
-const pages = [
-  { id: '1', title: 'Foo', content: 'Bar' },
-  { id: '2', title: 'Baz', content: 'Bar' },
-  { id: '3', title: 'Blah' }
-]
+import {PrismaClient} from "@prisma/client";
 
-export const pagesResolver = () => pages
+const prisma = new PrismaClient();
 
-type ResolverArgs = { id: string }
-export const pageResolver = (_: any, args: ResolverArgs) => pages.find(page => page.id === args.id) 
+export const pagesResolver = async () => await prisma.page.findMany();
+
+export const pageResolver = async (_: any, args: {id: string}) =>
+	await prisma.page.findUnique({where: {id: args.id}});
