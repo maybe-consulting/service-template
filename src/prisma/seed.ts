@@ -1,12 +1,12 @@
 import {PrismaClient} from "@prisma/client";
-import {pages} from "./pages";
+import {webpages} from "./webpages";
 
 const prisma = new PrismaClient();
 
 async function main() {
-	for (let page of pages) {
-		await prisma.page.create({
-			data: page,
+	for (let webpage of webpages) {
+		await prisma.webpage.create({
+			data: webpage,
 		});
 	}
 }

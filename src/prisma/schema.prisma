@@ -7,7 +7,8 @@ generator client {
   provider = "prisma-client-js"
 }
 
-model Page {
+// page is a reserved word in prisma
+model Webpage {
   id      String    @id @default(auto()) @map("_id") @db.ObjectId
   title   String    @unique
   content String?
