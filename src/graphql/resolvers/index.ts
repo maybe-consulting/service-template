@@ -1,4 +1,4 @@
-import { pagesResolver, pageResolver } from './pageResolver'
+import { pagesResolver, pageResolver } from "./pageResolver";
 
 export default {
   Query: {
