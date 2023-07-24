@@ -8,7 +8,8 @@
 		"dev:server": "nodemon ./src/main.ts",
 		"dev:env": "docker compose -f docker-compose.dev.yml up -d --build --force-recreate",
 		"dev:cleanup": "docker compose -f docker-compose.dev.yml down -v",
-		"db:seed": "prisma db seed"
+		"db:seed": "prisma db seed",
+		"lint": "eslint ./src"
 	},
 	"keywords": [],
 	"author": "",

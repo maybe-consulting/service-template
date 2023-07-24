@@ -17,7 +17,7 @@ export async function init() {
   app.use(
     expressMiddleware(apolloServer, {
       context: async ({req}) => ({token: req.headers.token}),
-    })
+    }),
   );
 }
 
