@@ -1,5 +1,5 @@
-import {PrismaClient} from "@prisma/client";
-import {webpages} from "./webpages";
+import { PrismaClient } from "@prisma/client";
+import { webpages } from "./webpages";
 
 const prisma = new PrismaClient();
 
