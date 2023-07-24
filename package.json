@@ -4,26 +4,34 @@
 	"description": "",
 	"main": "src/main.ts",
 	"scripts": {
-		"dev": "ts-node ./src/main.ts"
+		"dev": "npm run dev:cleanup && npm run dev:env && npm run db:seed && npm run dev:server",
+		"dev:server": "nodemon ./src/main.ts",
+		"dev:env": "docker compose -f docker-compose.dev.yml up -d --build --force-recreate",
+		"dev:cleanup": "docker compose -f docker-compose.dev.yml down -v",
+		"db:seed": "prisma db seed"
 	},
 	"keywords": [],
 	"author": "",
 	"license": "ISC",
 	"devDependencies": {
 		"@types/cors": "^2.8.13",
+		"@types/express": "^4.17.17",
+		"@types/node": "^20.2.5",
+		"@typescript-eslint/eslint-plugin": "^6.1.0",
+		"@typescript-eslint/parser": "^6.1.0",
+		"eslint": "^8.45.0",
+		"nodemon": "^2.0.22",
 		"prisma": "^4.15.0",
+		"ts-node": "^10.9.1",
 		"typescript": "^5.0.4"
 	},
 	"dependencies": {
 		"@apollo/server": "^4.7.1",
 		"@prisma/client": "^4.15.0",
-		"@types/express": "^4.17.17",
-		"@types/node": "^20.2.5",
 		"cors": "^2.8.5",
 		"express": "^4.18.2",
 		"graphql": "^16.6.0",
-		"nodemon": "^2.0.22",
-		"ts-node": "^10.9.1"
+		"mongodb": "^5.6.0"
 	},
 	"prisma": {
 		"schema": "./src/prisma/schema.prisma",

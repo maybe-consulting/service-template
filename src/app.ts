@@ -9,16 +9,16 @@ const app = express();
 const httpServer = http.createServer(app);
 
 export async function init() {
-	app.use(cors(), express.json({limit: "50mb"}));
+  app.use(cors(), express.json({limit: "50mb"}));
 
-	/* Apollo Server Setup */
-	const apolloServer = createApolloServer(httpServer);
-	await apolloServer.start();
-	app.use(
-		expressMiddleware(apolloServer, {
-			context: async ({req}) => ({token: req.headers.token}),
-		})
-	);
+  /* Apollo Server Setup */
+  const apolloServer = createApolloServer(httpServer);
+  await apolloServer.start();
+  app.use(
+    expressMiddleware(apolloServer, {
+      context: async ({req}) => ({token: req.headers.token}),
+    })
+  );
 }
 
 export default app;

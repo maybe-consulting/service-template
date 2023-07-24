@@ -4,22 +4,19 @@ import {webpages} from "./webpages";
 const prisma = new PrismaClient();
 
 async function main() {
-	for (let webpage of webpages) {
-		await prisma.webpage.create({
-			data: webpage,
-		});
-	}
+  for (const webpage of webpages) {
+    await prisma.webpage.create({
+      data: webpage,
+    });
+  }
 }
 
 main()
-	.then(async () => {
-		await prisma.$disconnect();
-	})
-
-	.catch(async (e) => {
-		console.error(e);
-
-		await prisma.$disconnect();
-
-		process.exit(1);
-	});
+  .then(async () => {
+    await prisma.$disconnect();
+  })
+  .catch(async (e) => {
+    console.error(e);
+    await prisma.$disconnect();
+    process.exit(1);
+  });
